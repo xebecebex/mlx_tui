@@ -1,0 +1,16 @@
+{
+  "name": "@workbench/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/index.tsx",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@workbench/core": "workspace:*",
+    "dotenv": "^16.6.1",
+    "ink": "^6.2.0",
+    "react": "^19.1.1"
+  }
+}

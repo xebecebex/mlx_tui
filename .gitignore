@@ -1,0 +1,31 @@
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Node.JS
+node_modules/
+dist/
+coverage/
+
+# TypeScript and test artifacts
+*.tsbuildinfo
+.vitetest/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Local workbench data
+.workbench/memory/
+.workbench/runs/
+
+# Python / MLX bridge
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+
+# MacOS
+.DS_Store
