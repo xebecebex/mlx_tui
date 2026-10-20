@@ -1,28 +1,27 @@
 # MLX Agent Workbench
 
-A cross-model agent harness with a TypeScript TUI,
-native MLX inference integration and visual workflow design.
 
-## Current milestone
+Перед вами терминальный агент, разработанный на TypeScript. Агент по-умолчанию работает с MLX. Сам по себе агент поддерживает все базовые функции, доступные любому харнесс: однако была добавлена функция работы с workflow в виде визуального графа (блок-схемы). 
 
-- a working terminal UI;
-- typed core contracts;
-- validated environment configuration;
-- chat, workflow and metrics screen stubs;
-- automated configuration tests.
+1. **UX:** история запросов как отдельные run-блоки; у каждого блока видны запрос, текущий этап, текстовый результат, вызовы инструментов, состояние и метрики. Верхняя панель — модель/провайдер/рабочая директория. Нижняя строка — запрос и команды. 
+2. **Cross-model:** локальные MLX-модели через Hugging Face / MLX Community или локальный путь; OpenAI; Anthropic; Ollama и другие OpenAI-совместимые провайдеры; в дальнейшем — вендорские адаптеры, например Yandex Cloud, если подтвердится соответствующий API-профиль.
+3. **Agent runtime:** инструментальный цикл, контекстный бюджет, ограничение итераций, прерывание, trace каждого действия, явные разрешения.
+4. **Субагенты:** профили `planner`, `implementer`, `reviewer`, `test-engineer`, отдельные системные инструкции, разрешённые инструменты и бюджеты.
+5. **Skills:** директории с описанием, условиями применения, инструкциями и опциональными ресурсами/scripts. Skill влияет на контекст и процедуры, но не может сам расширить права инструментов.
+6. **Workflow Studio:** граф из типизированных блоков: `start`, `agent`, `model`, `tool`, `condition`, `approval`, `memory_search`, `memory_write`, `evaluate`, `end`. Версионируемый YAML/JSON — источник истины; TUI показывает блоки, позволяет выделять узел, добавлять/соединять блоки, редактировать config, валидировать и запускать граф. Позже можно добавлю браузерную canvas-визуализацию, но WF Studio остаётся полноценным режимом CLI.
+7. **Память:** сначала интерфейс `MemoryProvider` и локальная память с историей; затем необязательный адаптер Tencent Hy-Memory для coding-сценария и эволюционной цепочки версий.
+8. **Самоулучшение harness:** на базе идеи Harness² — менять prompt/guardrails/tool guidance/skills/agent routing как кандидаты, прогонять одну и ту же eval-подборку, сравнивать результаты и принимать изменение лишь при измеримом улучшении. Весами модели не управлять.
+9. **Performance lab:** Доступны latency, time-to-first-token (TTFT), prompt tokens/s, generation tokens/s, duration, input/output tokens, provider, model, peak памяти MLX и RSS процесса, статус использования swap/memory pressure по отдельному системному замеру, число tool calls, число агентных ходов, стоимость там, где API даёт usage и известна цена.
+10. **MLOps/R&D:** воспроизводимый набор задач и конфигураций, версии библиотек/модели, seeds, JSONL-логи измерений, отчёты baseline/variant и экспорт результатов для DeepSelect, KV-cache и будущих оптимизаций.
 
-Inference, tools, subagents, workflow execution and real
-performance measurement are implemented in later phases.
-
-## Requirements
+## Требования
 
 - Node.js 22+
 - pnpm 10+
 - macOS with Apple Silicon for future MLX inference
 
-## Setup
 
-Enable Corepack if necessary:
+## Установка
 
 ```bash
 corepack enable
