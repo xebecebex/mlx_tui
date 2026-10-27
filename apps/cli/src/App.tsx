@@ -24,7 +24,7 @@ export function App({ config }: AppProps) {
   const [screen, setScreen] = useState<Screen>("chat");
   const [draft, setDraft] = useState("");
   const [notice, setNotice] = useState(
-    "Phase 0: интерфейс готов, подключение модели появится в Phase 1.",
+    "Интерфейс и подключение инференса в разработке.",
   );
 
   const [runs, setRuns] = useState<RunBlockData[]>([]);
@@ -79,7 +79,7 @@ export function App({ config }: AppProps) {
         id: randomUUID(),
         prompt: submitted,
         result:
-          "Инференс пока не подключён. На Phase 1 этот блок будет использовать общий Agent Runtime и выбранный провайдер.",
+          "MLX пока не подключен...Ожидайте",
       };
 
       setRuns((current) => [...current, run].slice(-10));
@@ -142,8 +142,7 @@ export function App({ config }: AppProps) {
               Новый run
             </Text>
             <Text dimColor>
-              Введи запрос или команду. На Phase 0
-              инференс ещё не вызывается.
+              Введи запрос или команду.
             </Text>
           </Box>
         ) : (

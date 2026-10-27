@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/index.tsx",
+    "dev:mlx": "tsx src/NewScreen.tsx",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

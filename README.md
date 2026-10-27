@@ -24,4 +24,10 @@
 ## Установка
 
 ```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+
+python -m pip install --upgrade pip
+python -m pip install -r apps/cli/python/requirements.txt
 corepack enable
+````

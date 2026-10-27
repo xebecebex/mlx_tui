@@ -27,5 +27,8 @@ __pycache__/
 .pytest_cache/
 *.py[cod]
 
+# Run history
+data/runs.jsonl
+
 # MacOS
 .DS_Store

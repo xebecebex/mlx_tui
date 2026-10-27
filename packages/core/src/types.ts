@@ -104,3 +104,40 @@ export interface runSummary {
     usage?: TokenUsage;
     metrics?: PerfomanceMetrics;
 }
+
+ export interface GenerateInputs {
+    providerId: ProviderId;
+    modelId: string;
+    messages: ModelMessage[];
+    maxTokens: number;
+ }
+
+ export interface GenerationHandlers {
+    onEvent?: (event: ProviderEvent) => void;
+    onStatus?: (message: string) => void;
+ }
+
+ /**
+  * итог одного завершенного запроса к модели
+  * Метрики и сведения об использовании токенов берем
+  * из существующих типов
+  */
+ export interface GenerationResult {
+    runId: string;
+    providerId: ProviderId;
+    modelId: string;
+    text: string;
+    usage: TokenUsage;
+    metrics: PerfomanceMetrics;
+    finishReason: string | null;
+ }
+
+ /**
+  * 
+  */
+ export interface RunRecord extends runSummary {
+    input: ModelMessage[];
+    output: string;
+    finishReason: string | null;
+    errorMessage?: string;
+ }
